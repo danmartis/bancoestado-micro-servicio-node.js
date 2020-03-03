@@ -7,16 +7,22 @@
     "@babel/polyfill": "^7.8.3",
     "axios": "^0.19.2",
     "cors": "^2.8.5",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "express": "^4.17.1",
     "express-list-endpoints": "^4.0.1",
-    "helmet": "^3.21.3"
+    "helmet": "^3.21.3",
+    "prettier": "^1.19.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
     "@babel/node": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^25.1.0",
+    "eslint": "^6.8.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2"
   },
@@ -25,7 +31,9 @@
     "build": "babel src --out-dir dist",
     "test": "jest",
     "start": "node dist/server.js",
-    "debug": "node --inspect src/server.js"
+    "debug": "node --inspect dist/server.js",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix"
   },
   "repository": {
     "type": "git",

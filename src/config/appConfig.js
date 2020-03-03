@@ -11,7 +11,7 @@ export const addEnvParam = (paramName, required) => {
 export const getVariable = (name, defaultValue) => {
     const env = process.env[name.toUpperCase()];
     if (env == undefined || env == null || env === 'undefined' || env === 'null') {
-        logger.warn('configBusServicios.getVariable(), ' + name + ', NO ESTA DEFINIDO!!!!! (se tomara valor default)');
+        console.log('configBusServicios.getVariable(), ' + name + ', NO ESTA DEFINIDO!!!!! (se tomara valor default)');
         return defaultValue;
     }
     return env;
