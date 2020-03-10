@@ -3,7 +3,7 @@ import app from "../../../../src/app";
 import supertest from "supertest";
 const request = supertest(app);
 
-it('Test endpoint /v1/registro-biller/registro good', async done => {
+it('Test endpoint /v1/registro-biller/ good', async done => {
   let dataMock = {
     business_name: "businessname",
     rut: "rut",
@@ -14,7 +14,7 @@ it('Test endpoint /v1/registro-biller/registro good', async done => {
     position: "position@gmail.com"
   };
   
-  const res = await request.post('/bff/se-bff-empresas/v1/registro-biller/registro').send(dataMock);
+  const res = await request.post('/bff/se-bff-empresas/v1/registro-biller/').send(dataMock);
   let text = JSON.parse(res.text);
 
   expect(res.status).toBe(200);
@@ -24,7 +24,7 @@ it('Test endpoint /v1/registro-biller/registro good', async done => {
 })
 
 
-it('Test endpoint /v1/registro-biller/registro Error', async done => {
+it('Test endpoint /v1/registro-biller/ Error', async done => {
   let dataMock = {
     rut: "rut",
     name: "name",
@@ -34,7 +34,7 @@ it('Test endpoint /v1/registro-biller/registro Error', async done => {
     position: "position@gmail.com"
   };
 
-  const res = await request.post('/bff/se-bff-empresas/v1/registro-biller/registro').send(dataMock);
+  const res = await request.post('/bff/se-bff-empresas/v1/registro-biller/').send(dataMock);
   let text = JSON.parse(res.text);
 
   expect(res.status).toBe(400);
