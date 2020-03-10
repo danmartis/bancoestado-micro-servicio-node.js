@@ -1,4 +1,4 @@
-import { loginSchema } from "../../schemas/login.schema";
+import { loginSchema, changePasswordSchema } from "../../schemas/login.schema";
 import {
   mensajeSalida,
   CODE_RESP_BAD_REQUEST,
@@ -17,6 +17,9 @@ export const login = (req, res) => {
     if (error) {
       reject({ message: MEN_INCORRECT_DATA, data: error });
     } else {
+      /*
+      Se debe generar código con llamada a switch para consultar usuarios
+      */
       let user = users.find((usuario) => {
         return usuario.rut === value.rut
         && usuario.password === value.password
@@ -28,6 +31,34 @@ export const login = (req, res) => {
       } else {
         reject({ message: MEN_USER_NOT_FOUND, data: {} });
       }
+    }
+  })
+    .then(data => {
+      res.status(CODE_RESP_OK)
+      .json(
+        mensajeSalida(CODE_MESSAGE_OK, data.message, data.data).SUCCESS
+      );
+    })
+    .catch(error => {
+      res.status(CODE_RESP_BAD_REQUEST)
+      .json(
+        mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
+      );
+    });
+};
+
+export const changePassword = (req, res) => {
+  new Promise((resolve, reject) => {
+    console.log("req.body", req.body)
+    let { error, value } = changePasswordSchema.validate(req.body);
+
+    if (error) {
+      reject({ message: MEN_INCORRECT_DATA, data: error });
+    } else {
+      /*
+      Se debe generar código con llamada a switch
+      */
+      resolve({ message: MEN_CORRECT_DATA, data: value });
     }
   })
     .then(data => {

@@ -7,3 +7,10 @@ export const loginSchema = Joi.object({
   password: password,
   changePassword: Joi.boolean().required()
 });
+
+export const changePasswordSchema = Joi.object({
+  rut: rut,
+  email: email,
+  oldPassword: Joi.string().required(),
+  newPassword: password,
+});
