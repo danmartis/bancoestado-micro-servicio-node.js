@@ -49,7 +49,6 @@ export const login = (req, res) => {
 
 export const changePassword = (req, res) => {
   new Promise((resolve, reject) => {
-    console.log("req.body", req.body)
     let { error, value } = changePasswordSchema.validate(req.body);
 
     if (error) {

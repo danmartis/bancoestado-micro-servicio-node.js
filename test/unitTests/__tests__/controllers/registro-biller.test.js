@@ -9,9 +9,9 @@ it('Test endpoint /v1/registro-biller/ good', async done => {
     rut: "rut",
     name: "name",
     last_name: "last_name",
-    email: "email",
-    phone: "950923752",
-    position: "position@gmail.com"
+    email: "email@gmail.com",
+    phone: "963214569",
+    position: "position"
   };
   
   const res = await request.post('/bff/se-bff-empresas/v1/registro-biller/').send(dataMock);
@@ -29,9 +29,9 @@ it('Test endpoint /v1/registro-biller/ Error', async done => {
     rut: "rut",
     name: "name",
     last_name: "last_name",
-    email: "email",
-    phone: "950923752",
-    position: "position@gmail.com"
+    email: "email@gmail.com",
+    phone: "963214569",
+    position: "position"
   };
 
   const res = await request.post('/bff/se-bff-empresas/v1/registro-biller/').send(dataMock);

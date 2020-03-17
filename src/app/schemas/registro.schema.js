@@ -8,5 +8,5 @@ export const registroSchema = Joi.object({
   last_name: Joi.string().required().max(50),
   email: email,
   phone: phone,
-  position: Joi.string().required().email(),
+  position: Joi.string().required(),
 });
