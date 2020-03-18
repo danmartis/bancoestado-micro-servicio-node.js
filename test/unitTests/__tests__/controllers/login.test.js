@@ -3,7 +3,7 @@ import app from "../../../../src/app";
 import supertest from "supertest";
 const request = supertest(app);
 
-it('Test endpoint /bff/se-bff-empresas/v1/login good (Datos Correctos)', async done => {
+it('Test endpoint /bff/se-ms-registrobiller/v1/login good (Datos Correctos)', async done => {
   let dataMock = {
     email: "entel@cliente.cl",
     rut: "11111111-2",
@@ -11,7 +11,7 @@ it('Test endpoint /bff/se-bff-empresas/v1/login good (Datos Correctos)', async d
     changePassword: false
   };
   
-  const res = await request.post('/bff/se-bff-empresas/v1/login').send(dataMock);
+  const res = await request.post('/bff/se-ms-registrobiller/v1/login').send(dataMock);
   let text = JSON.parse(res.text);
 
   expect(res.status).toBe(200);
@@ -20,7 +20,7 @@ it('Test endpoint /bff/se-bff-empresas/v1/login good (Datos Correctos)', async d
   done()
 })
 
-it('Test endpoint /bff/se-bff-empresas/v1/login error (Datos Incorrectos)', async done => {
+it('Test endpoint /bff/se-ms-registrobiller/v1/login error (Datos Incorrectos)', async done => {
   let dataMock = {
     email: "entel@cliente.cl",
     rut: "11111111-2",
@@ -28,7 +28,7 @@ it('Test endpoint /bff/se-bff-empresas/v1/login error (Datos Incorrectos)', asyn
     changePassword: false
   };
   
-  const res = await request.post('/bff/se-bff-empresas/v1/login').send(dataMock);
+  const res = await request.post('/bff/se-ms-registrobiller/v1/login').send(dataMock);
   let text = JSON.parse(res.text);
   
   expect(res.status).toBe(400);
@@ -37,7 +37,7 @@ it('Test endpoint /bff/se-bff-empresas/v1/login error (Datos Incorrectos)', asyn
   done()
 })
 
-it('Test endpoint /bff/se-bff-empresas/v1/login error (Usuario no encontrado)', async done => {
+it('Test endpoint /bff/se-ms-registrobiller/v1/login error (Usuario no encontrado)', async done => {
   let dataMock = {
     email: "entel1@cliente.cl",
     rut: "11111111-2",
@@ -45,7 +45,7 @@ it('Test endpoint /bff/se-bff-empresas/v1/login error (Usuario no encontrado)', 
     changePassword: false
   };
 
-  const res = await request.post('/bff/se-bff-empresas/v1/login').send(dataMock);
+  const res = await request.post('/bff/se-ms-registrobiller/v1/login').send(dataMock);
   let text = JSON.parse(res.text);
   
   expect(res.status).toBe(400);
@@ -55,7 +55,7 @@ it('Test endpoint /bff/se-bff-empresas/v1/login error (Usuario no encontrado)', 
 })
 
 // cambio contraseña
-it('Test endpoint /bff/se-bff-empresas/v1/login/cambio-contrasenia good (Datos Correctos)', async done => {
+it('Test endpoint /bff/se-ms-registrobiller/v1/login/cambio-contrasenia good (Datos Correctos)', async done => {
   let dataMock = {
     email: "cliente@cliente.cl",
     rut: "11111111-1",
@@ -63,7 +63,7 @@ it('Test endpoint /bff/se-bff-empresas/v1/login/cambio-contrasenia good (Datos C
     newPassword: "12345678"
   };
   
-  const res = await request.put('/bff/se-bff-empresas/v1/login/cambio-contrasenia').send(dataMock);
+  const res = await request.put('/bff/se-ms-registrobiller/v1/login/cambio-contrasenia').send(dataMock);
   let text = JSON.parse(res.text);
 
   expect(res.status).toBe(200);
@@ -72,7 +72,7 @@ it('Test endpoint /bff/se-bff-empresas/v1/login/cambio-contrasenia good (Datos C
   done()
 })
 
-it('Test endpoint /bff/se-bff-empresas/v1/login/cambio-contrasenia error (Datos Incorrectos)', async done => {
+it('Test endpoint /bff/se-ms-registrobiller/v1/login/cambio-contrasenia error (Datos Incorrectos)', async done => {
   let dataMock = {
     email: "cliente@cliente.cla",
     rut: "11111111-11",
@@ -80,7 +80,7 @@ it('Test endpoint /bff/se-bff-empresas/v1/login/cambio-contrasenia error (Datos 
     newPassword: "123456781"
   };
   
-  const res = await request.put('/bff/se-bff-empresas/v1/login/cambio-contrasenia').send(dataMock);
+  const res = await request.put('/bff/se-ms-registrobiller/v1/login/cambio-contrasenia').send(dataMock);
   let text = JSON.parse(res.text);
 
   expect(res.status).toBe(400);

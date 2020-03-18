@@ -14,7 +14,7 @@ it('Test endpoint /v1/registro-biller/ good', async done => {
     position: "position"
   };
   
-  const res = await request.post('/bff/se-bff-empresas/v1/registro-biller/').send(dataMock);
+  const res = await request.post('/bff/se-ms-registrobiller/v1/registro-biller/').send(dataMock);
   let text = JSON.parse(res.text);
 
   expect(res.status).toBe(200);
@@ -34,7 +34,7 @@ it('Test endpoint /v1/registro-biller/ Error', async done => {
     position: "position"
   };
 
-  const res = await request.post('/bff/se-bff-empresas/v1/registro-biller/').send(dataMock);
+  const res = await request.post('/bff/se-ms-registrobiller/v1/registro-biller/').send(dataMock);
   let text = JSON.parse(res.text);
 
   expect(res.status).toBe(400);
