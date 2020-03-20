@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: se-ms-registrobiller
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: se-ms-registrobiller
+      #portal: personas
+      #tipo: ms
+  template:
+    metadata:
+      labels:
+        app: se-ms-registrobiller
+    spec:
+      containers:
+        - name: se-ms-registrobiller
+          image: 483819493476.dkr.ecr.us-east-1.amazonaws.com/se-ms-registrobiller:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              protocol: TCP

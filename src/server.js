@@ -12,7 +12,7 @@ const main = async () => {
     let port = api.port;
     
     //Documentación API
-    const base = "/bff/se-ms-registrobiller";
+    const base = "/ms/se-ms-registrobiller";
     const swaggerDocument = YAML.load('./ms_spec.yaml');
     app.use(`${base}/api-docs`, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

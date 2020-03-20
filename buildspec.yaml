@@ -1,0 +1,78 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+      docker: 18
+  pre_build:
+    commands:
+      - export AWS_ROLE=arn:aws:iam::483819493476:role/service-role/codebuild-v1-bff-compraqui-build-service-role
+      - export REGISTRY=483819493476.dkr.ecr.us-east-1.amazonaws.com
+      - export PROJECT_NAME=se-ms-registrobiller
+      - export COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - export IMAGE_TAG=${COMMIT_HASH:=latest}
+
+
+      - echo $IMAGE_TAG
+      - echo $REGISTRY
+      - echo $COMMIT_HASH
+
+      - aws --version
+
+      - $(aws ecr get-login --no-include-email --region us-east-1)
+
+      - aws --region us-east-1 eks update-kubeconfig --name se-cluster --role-arn $AWS_ROLE
+      - cat /root/.kube/config
+  build:
+    commands:
+
+
+      - echo Build started on `date`
+      - npm i
+      - npm build
+
+      - docker build -t $REGISTRY/$PROJECT_NAME:$IMAGE_TAG .
+      - docker tag $REGISTRY/$PROJECT_NAME:$IMAGE_TAG $REGISTRY/$PROJECT_NAME:$COMMIT_HASH
+      - docker push $REGISTRY/$PROJECT_NAME:$COMMIT_HASH
+
+      - aws configure set aws_access_key_id $access_key
+      - aws configure set aws_secret_access_key $default_secret_key
+      - aws configure set default.region us-east-1
+
+      # - aws --region us-east-1 eks update-kubeconfig --name se-cluster --role-arn arn:aws:iam::483819493476:role/eksctl-se-cluster-cluster-ServiceRole-QF429368XYGF
+      # - cat /root/.kube/config
+
+      - ls -l kubernetes
+
+      #- env
+
+      - curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator
+      - chmod +x ./aws-iam-authenticator
+
+      - mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH
+      #- aws-iam-authenticator token
+      - aws sts get-caller-identity
+      - aws eks --region us-east-1 update-kubeconfig --name se-cluster
+
+      - kubectl config get-contexts
+
+      #- kubectl get services
+
+      #- kubectl get deployments --v=99
+
+      - kubectl apply -f kubernetes/deployment.yaml
+      - kubectl apply -f kubernetes/service.yaml
+
+      # it worked ONE TIME!
+      #- kubectl patch deployment $PROJECT_NAME -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"build\":\"$COMMIT_HASH\"}}}}}}"
+      - kubectl set image deployment/$PROJECT_NAME $PROJECT_NAME=$REGISTRY/$PROJECT_NAME:$COMMIT_HASH --record
+
+  post_build:
+    commands:
+
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: ''
