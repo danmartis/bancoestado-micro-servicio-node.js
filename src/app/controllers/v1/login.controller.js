@@ -6,8 +6,9 @@ import {
   CODE_MESSAGE_OK,
   CODE_MESSAGE_ERROR,
   MEN_CORRECT_DATA,
-  MEN_USER_NOT_FOUND,
-  MEN_INCORRECT_DATA
+  MEN_INCORRECT_DATA,
+  MEN_INCORRECT_PASSWORD,
+  KEY_LOCKED
 } from "../../../config/mensaje-respuesta";
 
 export const login = (req, res) => {
@@ -22,15 +23,23 @@ export const login = (req, res) => {
       */
       let user = users.find((usuario) => {
         return usuario.rut === value.rut
-        && usuario.password === value.password
         && usuario.email === value.email
       });
 
-      if (user) {
-        resolve({ message: MEN_CORRECT_DATA, data: user });
+      if( user ) {
+        if( user.password == value.password ) {
+          resolve({ message: MEN_CORRECT_DATA, data: user });
+        } else {
+          reject({ message: MEN_INCORRECT_PASSWORD, data: {} });
+        }
       } else {
-        reject({ message: MEN_USER_NOT_FOUND, data: {} });
+        reject({ message: MEN_INCORRECT_DATA, data: {} });
       }
+
+      // esto debe cambiar cuando se realice la conexión con switch ya que él validará el bloqueo de contraseña
+      let error_3_veces = 3;
+      if( error_3_veces == 3 )
+        reject({ message: KEY_LOCKED, data: {} });
     }
   })
     .then(data => {

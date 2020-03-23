@@ -7,186 +7,199 @@ info:
 
 
 servers:
-  - url: http://localhost:3000/ms/se-ms-registrobiller/v1
+  - url: http://localhost:3001/ms/se-ms-registrobiller/v1
 
 
 tags:
-- name: "registro-biller"
-- name: "login"
+- name: registro-biller
+- name: login
 paths:
   /registro-biller:
     post:
       tags:
-      - "registro-biller"
-      summary: "Registra a un nuevo BIller"
+      - registro-biller
+      summary: Registra a un nuevo BIller
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/registroBiller"
+              $ref: '#/components/schemas/registroBiller'
       responses:
         200:
-          description: "Datos Correctos"
+          description: Datos Correctos
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiResponseCorrectData"
+                $ref: '#/components/schemas/ApiResponseCorrectData'
         400:
-          description: "Datos incompletos"
+          description: Datos Incorrectos
           content:
             application/json:    
               schema:
-                $ref: "#/components/schemas/ApiResponseIncorrectData"
+                $ref: '#/components/schemas/ApiResponseIncorrectData'
   /login:
     post:
       tags:
-      - "login"
-      summary: "Da acceso a un usuario BIller"
+      - login
+      summary: Da acceso a un usuario BIller
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/login"
+              $ref: '#/components/schemas/login'
       responses:
         200:
-          description: "Datos Correctos"
+          description: Datos Correctos
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiResponseCorrectData"
+                $ref: '#/components/schemas/ApiResponseCorrectData'
         400:
-          description: "Usuario no encontrado"
+          description: Datos Incorrectos
           content:
             application/json:    
               schema:
                 oneOf:
-                  - $ref: "#/components/schemas/ApiResponseIncorrectData"
-                  - $ref: "#/components/schemas/ApiResponseUserNotFound"
+                  - $ref: '#/components/schemas/ApiResponseIncorrectData'
+                  - $ref: '#/components/schemas/ApiResponseIncorrectPasswrd'
+                  - $ref: '#/components/schemas/ApiResponsekeyLocked'
   /login/cambio-contrasenia:
     put:
       tags:
-      - "login"
-      summary: "Cambia clave a un usuario BIller"
+      - login
+      summary: Cambia clave a un usuario BIller
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/changePassword"
+              $ref: '#/components/schemas/changePassword'
       responses:
         200:
-          description: "Datos Correctos"
+          description: Datos Correctos
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiResponseCorrectData"
+                $ref: '#/components/schemas/ApiResponseCorrectData'
         400:
-          description: "Datos incompletos"
+          description: Datos Incorrectos
           content:
             application/json:    
               schema:
-                $ref: "#/components/schemas/ApiResponseIncorrectData"
+                $ref: '#/components/schemas/ApiResponseIncorrectData'
 components:
   schemas:
   
     registroBiller:
-      type: "object"
+      type: object
       properties:
         business_name:
-          type: "string"
-          example: "EMPRESA NACIONAL DE TELECOMUNICACIONES S.A."
+          type: string
+          example: EMPRESA NACIONAL DE TELECOMUNICACIONES S.A.
         rut:
-          type: "string"
-          example: "92580000-7"
+          type: string
+          example: 92580000-7
         name:
-          type: "string"
-          example: "José"
+          type: string
+          example: José
         last_name:
-          type: "string"
-          example: "Gonzalez Muñoz"
+          type: string
+          example: Gonzalez Muñoz
         email:
-          type: "string"
-          example: "entel@cliente.cl"
+          type: string
+          example: entel@cliente.cl
         phone:
-          type: "string"
-          example: "223600123"
+          type: string
+          example: 223600123
         position:
-          type: "string"
-          example: "Gerente"
+          type: string
+          example: Gerente
     login:
-      type: "object"
+      type: object
       properties:
         rut:
-          type: "string"
-          example: "76124890-1"
+          type: string
+          example: 76124890-1
         email:
-          type: "string"
-          example: "claudio.monasterio@telefonica.com"
+          type: string
+          example: claudio.monasterio@telefonica.com
         password:
-          type: "string"
-          example: "movistar"
+          type: string
+          example: movistar
         changePassword:
-          type: "boolean"
+          type: boolean
           example: false
     changePassword:
-      type: "object"
+      type: object
       properties:
         rut:
-          type: "string"
-          example: "92580000-7"
+          type: string
+          example: 92580000-7
         email:
-          type: "string"
-          example: "entel@cliente.cl"
+          type: string
+          example: entel@cliente.cl
         oldPassword:
-          type: "string"
-          example: "entel123"
+          type: string
+          example: entel123
         newPassword:
-          type: "string"
-          example: "entel321"
+          type: string
+          example: entel321
     ApiResponseCorrectData:
-      type: "object"
+      type: object
       properties:
         code:
-          type: "string"
-          example: "OK.000"
+          type: string
+          example: OK.000
         message:
-          type: "string"
-          example: "Datos Correctos"
+          type: string
+          example: Datos Correctos
         data:
-          type: "object"
+          type: object
           example: {}
     ApiResponseIncorrectData:
-      type: "object"
+      type: object
       properties:
         code:
-          type: "string"
-          example: "ERROR.001"
+          type: string
+          example: ERROR.001
         message:
-          type: "string"
-          example: "Datos Incorrectos"
+          type: string
+          example: Datos Incorrectos
         data:
-          type: "object"
+          type: object
           example: {}
     ApiResponseIncompleteData:
-      type: "object"
+      type: object
       properties:
         code:
-          type: "string"
-          example: "ERROR.001"
+          type: string
+          example: ERROR.001
         message:
-          type: "string"
-          example: "Datos Incompletos"
+          type: string
+          example: Datos Incompletos
         data:
-          type: "object"
+          type: object
           example: {}
-    ApiResponseUserNotFound:
-      type: "object"
+    ApiResponseIncorrectPasswrd:
+      type: object
       properties:
         code:
-          type: "string"
-          example: "ERROR.001"
+          type: string
+          example: ERROR.001
         message:
-          type: "string"
-          example: "Usuario no encontrado"
+          type: string
+          example: Clave incorrecta
         data:
-          type: "object"
+          type: object
+          example: {}
+    ApiResponsekeyLocked:
+      type: object
+      properties:
+        code:
+          type: string
+          example: ERROR.001
+        message:
+          type: string
+          example: Clave Bloqueada. Puedes recuperarla presionando el link “¿olvidaste tu contraseña?
+        data:
+          type: object
           example: {}
