@@ -93,37 +93,37 @@ components:
       properties:
         business_name:
           type: "string"
-          example: "businessname"
+          example: "EMPRESA NACIONAL DE TELECOMUNICACIONES S.A."
         rut:
           type: "string"
-          example: "rut"
+          example: "92580000-7"
         name:
           type: "string"
-          example: "name"
+          example: "José"
         last_name:
           type: "string"
-          example: "last_name"
+          example: "Gonzalez Muñoz"
         email:
           type: "string"
-          example: "email@gmail.com"
+          example: "entel@cliente.cl"
         phone:
           type: "string"
-          example: "963214569"
+          example: "223600123"
         position:
           type: "string"
-          example: "position"
+          example: "Gerente"
     login:
       type: "object"
       properties:
         rut:
           type: "string"
-          example: "11111111-2"
+          example: "76124890-1"
         email:
           type: "string"
-          example: "entel@cliente.cl"
+          example: "claudio.monasterio@telefonica.com"
         password:
           type: "string"
-          example: "12345678"
+          example: "movistar"
         changePassword:
           type: "boolean"
           example: false
@@ -132,16 +132,16 @@ components:
       properties:
         rut:
           type: "string"
-          example: "11111111-1"
+          example: "92580000-7"
         email:
           type: "string"
-          example: "cliente@cliente.cl"
+          example: "entel@cliente.cl"
         oldPassword:
           type: "string"
-          example: "RC123456"
+          example: "entel123"
         newPassword:
           type: "string"
-          example: "12345678"
+          example: "entel321"
     ApiResponseCorrectData:
       type: "object"
       properties:
