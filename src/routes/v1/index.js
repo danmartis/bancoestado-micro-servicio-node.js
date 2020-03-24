@@ -3,7 +3,7 @@ import { Router } from "express";
 import healthcheck from "./healthcheck.routes";
 import registroBiller from "./registro-biller.routes";
 import login from "./login.routes";
-import personalInformation from "./personal-settings.routes";
+import personalInformation from "./maintainer-user.routes";
 const router = Router();
 
 router.use("/healthcheck", healthcheck);

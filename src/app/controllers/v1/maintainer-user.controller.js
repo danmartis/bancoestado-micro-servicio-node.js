@@ -8,6 +8,8 @@ import {
     MEN_INCORRECT_DATA
 } from "../../../config/mensaje-respuesta";
 
+import { registerNewUserSchema } from "../../schemas/register-new-user.schema";
+
 export const personalInformation = (req, res) => {
     new Promise((resolve, reject) => {
             let dataUser = users.find(user => user.email === req.email && user.rut == req.rut)
@@ -57,3 +59,28 @@ const users = [{
         city: 'Santiago'
     }
 ];
+
+export const registerNewUser = (req, res) => {
+  new Promise((resolve, reject) => {
+    let { error, value } = registerNewUserSchema.validate(req.body);
+    if (error) {
+      reject(error);
+    } else {
+      resolve(value);
+    }
+  })
+    .then(data => {
+      res.json({
+        status: "OK",
+        message: "Datos Correctos",
+        data
+      });
+    })
+    .catch(error => {
+      res.status(400).json({
+        status: "ERROR",
+        message: "Datos incompletos",
+        error
+      });
+    });
+};
