@@ -13,6 +13,7 @@ servers:
 tags:
 - name: registro-biller
 - name: login
+- name: maintainer-user
 paths:
   /registro-biller:
     post:
@@ -24,6 +25,29 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/registroBiller'
+      responses:
+        200:
+          description: Datos Correctos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseCorrectData'
+        400:
+          description: Datos Incorrectos
+          content:
+            application/json:    
+              schema:
+                $ref: '#/components/schemas/ApiResponseIncorrectData'
+  /maintainer-user:
+    post:
+      tags:
+      - registerNewUser
+      summary: Registra a un nuevo usuario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registerNewUser'
       responses:
         200:
           description: Datos Correctos
@@ -88,7 +112,6 @@ paths:
                 $ref: '#/components/schemas/ApiResponseIncorrectData'
 components:
   schemas:
-  
     registroBiller:
       type: object
       properties:
@@ -143,6 +166,24 @@ components:
         newPassword:
           type: string
           example: entel321
+    registerNewUser:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Juan Perez
+        email:
+          type: string
+          example: entel@cliente.cl
+        perfil:
+          type: string
+          example: Administrador
+        asignarContacto:
+          type: boolean
+          example: true
+        tipoContacto:
+          type: string
+          example: Contacto Operacional
     ApiResponseCorrectData:
       type: object
       properties:
@@ -203,3 +244,4 @@ components:
         data:
           type: object
           example: {}
+    
