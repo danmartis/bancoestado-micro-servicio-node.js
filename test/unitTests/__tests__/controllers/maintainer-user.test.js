@@ -50,7 +50,8 @@ it(`Test endpoint /registerNewUser OK ${MEN_CORRECT_DATA}`, async done => {
         name: "name",
         email: "email@gmail.com",
         perfil: "perfil",
-        tipoContrato: "contratoA"
+        asignarContacto: true,
+        tipoContacto: "Contacto Operacional"
     };
 
     const res = await request.post('/ms/se-ms-registrobiller/v1/configuracion-personal/registerNewUser')
