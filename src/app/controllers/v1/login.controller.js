@@ -6,9 +6,10 @@ import {
   CODE_MESSAGE_OK,
   CODE_MESSAGE_ERROR,
   MEN_CORRECT_DATA,
+  MEN_INCORRECT_DATA_LOGIN,
+  MEN_INCORRECT_SCHEMA,
   MEN_INCORRECT_DATA,
   MEN_INCORRECT_PASSWORD,
-  KEY_LOCKED
 } from "../../../config/mensaje-respuesta";
 
 export const login = (req, res) => {
@@ -16,7 +17,7 @@ export const login = (req, res) => {
     let { error, value } = loginSchema.validate(req.body);
 
     if (error) {
-      reject({ message: MEN_INCORRECT_DATA, data: error });
+      reject({ message: MEN_INCORRECT_SCHEMA, data: error });
     } else {
       /*
       Se debe generar código con llamada a switch para consultar usuarios
@@ -33,13 +34,15 @@ export const login = (req, res) => {
           reject({ message: MEN_INCORRECT_PASSWORD, data: {} });
         }
       } else {
-        reject({ message: MEN_INCORRECT_DATA, data: {} });
+        reject({ message: MEN_INCORRECT_DATA_LOGIN, data: {} });
       }
 
       // esto debe cambiar cuando se realice la conexión con switch ya que él validará el bloqueo de contraseña
+      /*
       let error_3_veces = 3;
       if( error_3_veces == 3 )
         reject({ message: KEY_LOCKED, data: {} });
+      */
     }
   })
     .then(data => {
