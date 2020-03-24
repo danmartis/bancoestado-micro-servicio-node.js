@@ -9,7 +9,7 @@ import {
   MEN_INCORRECT_DATA_LOGIN,
   MEN_INCORRECT_SCHEMA,
   MEN_INCORRECT_DATA,
-  MEN_INCORRECT_PASSWORD,
+  MEN_INCORRECT_PASSWORD
 } from "../../../config/mensaje-respuesta";
 
 export const login = (req, res) => {
@@ -22,13 +22,12 @@ export const login = (req, res) => {
       /*
       Se debe generar código con llamada a switch para consultar usuarios
       */
-      let user = users.find((usuario) => {
-        return usuario.rut === value.rut
-        && usuario.email === value.email
+      let user = users.find(usuario => {
+        return usuario.rut === value.rut && usuario.email === value.email;
       });
 
-      if( user ) {
-        if( user.password == value.password ) {
+      if (user) {
+        if (user.password == value.password) {
           resolve({ message: MEN_CORRECT_DATA, data: user });
         } else {
           reject({ message: MEN_INCORRECT_PASSWORD, data: {} });
@@ -46,16 +45,16 @@ export const login = (req, res) => {
     }
   })
     .then(data => {
-      res.status(CODE_RESP_OK)
-      .json(
-        mensajeSalida(CODE_MESSAGE_OK, data.message, data.data).SUCCESS
-      );
+      res
+        .status(CODE_RESP_OK)
+        .json(mensajeSalida(CODE_MESSAGE_OK, data.message, data.data).SUCCESS);
     })
     .catch(error => {
-      res.status(CODE_RESP_BAD_REQUEST)
-      .json(
-        mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
-      );
+      res
+        .status(CODE_RESP_BAD_REQUEST)
+        .json(
+          mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
+        );
     });
 };
 
@@ -73,16 +72,16 @@ export const changePassword = (req, res) => {
     }
   })
     .then(data => {
-      res.status(CODE_RESP_OK)
-      .json(
-        mensajeSalida(CODE_MESSAGE_OK, data.message, data.data).SUCCESS
-      );
+      res
+        .status(CODE_RESP_OK)
+        .json(mensajeSalida(CODE_MESSAGE_OK, data.message, data.data).SUCCESS);
     })
     .catch(error => {
-      res.status(CODE_RESP_BAD_REQUEST)
-      .json(
-        mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
-      );
+      res
+        .status(CODE_RESP_BAD_REQUEST)
+        .json(
+          mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
+        );
     });
 };
 

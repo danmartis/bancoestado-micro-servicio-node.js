@@ -1,4 +1,4 @@
-import {registroSchema} from "../../schemas/registro.schema";
+import { registroSchema } from "../../schemas/registro.schema";
 import {
   mensajeSalida,
   CODE_RESP_BAD_REQUEST,
@@ -6,7 +6,7 @@ import {
   CODE_MESSAGE_OK,
   CODE_MESSAGE_ERROR,
   MEN_CORRECT_DATA,
-  MEN_INCORRECT_SCHEMA,
+  MEN_INCORRECT_SCHEMA
 } from "../../../config/mensaje-respuesta";
 
 export const registro = (req, res) => {
@@ -19,15 +19,15 @@ export const registro = (req, res) => {
     }
   })
     .then(data => {
-      res.status(CODE_RESP_OK)
-      .json(
-        mensajeSalida(CODE_MESSAGE_OK, data.message, data.data).SUCCESS
-      );
+      res
+        .status(CODE_RESP_OK)
+        .json(mensajeSalida(CODE_MESSAGE_OK, data.message, data.data).SUCCESS);
     })
     .catch(error => {
-      res.status(CODE_RESP_BAD_REQUEST)
-      .json(
-        mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
-      );
+      res
+        .status(CODE_RESP_BAD_REQUEST)
+        .json(
+          mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
+        );
     });
 };

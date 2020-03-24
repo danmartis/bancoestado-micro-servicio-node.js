@@ -13,6 +13,7 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
+        "indent": ["error", 2]
     },
     // añade la opción "parser" con "babel-eslint"
 	"parser": "babel-eslint",
