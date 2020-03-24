@@ -18,7 +18,7 @@ export const getVariable = (name, defaultValue) => {
 }
 
 export const api = {
-    port: addEnvParam("PORT", false) || 3001,
+    port: addEnvParam("PORT", false) || 3000,
     checkCertificate: process.env.NODE_ENV === ("produccion" || "production"),
     hostMicroservicios: 'https://172.16.97.113'
 };
