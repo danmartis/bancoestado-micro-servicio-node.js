@@ -19,7 +19,7 @@ it(`Test endpoint /informacion-personal OK ${MEN_CORRECT_DATA}`, async done => {
         "rut": "76124890-1"
     };
 
-    const res = await request.post('/ms/se-ms-registrobiller/v1/configuracion-personal/informacion-personal')
+    const res = await request.post('/ms/se-ms-registrobiller/v1/maintainer-user/informacion-personal')
         .send(dataMock);
     let text = JSON.parse(res.text);
 
@@ -35,7 +35,7 @@ it(`Test endpoint /informacion-personal Error ${MEN_INCORRECT_DATA}`, async done
         "rut": "7614890-1"
     };
 
-    const res = await request.post('/ms/se-ms-registrobiller/v1/configuracion-personal/informacion-personal')
+    const res = await request.post('/ms/se-ms-registrobiller/v1/maintainer-user/informacion-personal')
         .send(dataMock);
     let text = JSON.parse(res.text);
 
@@ -54,7 +54,7 @@ it(`Test endpoint /registerNewUser OK ${MEN_CORRECT_DATA}`, async done => {
         tipoContacto: "Contacto Operacional"
     };
 
-    const res = await request.post('/ms/se-ms-registrobiller/v1/configuracion-personal/registerNewUser')
+    const res = await request.post('/ms/se-ms-registrobiller/v1/maintainer-user/registerNewUser')
         .send(dataMock);
     let text = JSON.parse(res.text);
 
@@ -71,7 +71,7 @@ it(`Test endpoint /registerNewUser Error ${MEN_INCORRECT_SCHEMA}`, async done =>
         tipoContrato: "contratoA"
     };
 
-    const res = await request.post('/ms/se-ms-registrobiller/v1/configuracion-personal/registerNewUser')
+    const res = await request.post('/ms/se-ms-registrobiller/v1/maintainer-user/registerNewUser')
         .send(dataMock);
     let text = JSON.parse(res.text);
 
