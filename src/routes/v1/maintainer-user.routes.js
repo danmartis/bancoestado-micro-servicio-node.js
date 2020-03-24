@@ -6,7 +6,7 @@ import {
 
 const router = Router();
 
-router.get("/informacion-personal", personalInformation);
-router.post( "/registerNewUser", registerNewUser);
+router.post("/informacion-personal", personalInformation);
+router.post("/registerNewUser", registerNewUser);
 
 export default router;

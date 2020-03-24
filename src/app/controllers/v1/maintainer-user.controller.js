@@ -14,7 +14,7 @@ import { registerNewUserSchema } from "../../schemas/register-new-user.schema";
 
 export const personalInformation = (req, res) => {
     new Promise((resolve, reject) => {
-            let dataUser = users.find(user => user.email === req.email && user.rut == req.rut)
+            let dataUser = users.find(user => user.email === req.body.email && user.rut == req.body.rut)
             if (dataUser) {
                 resolve({ message: MEN_CORRECT_DATA, data: dataUser });
             } else {
@@ -74,23 +74,23 @@ const users = [{
 
 export const registerNewUser = (req, res) => {
     new Promise((resolve, reject) => {
-        let { error, value } = registerNewUserSchema.validate(req.body);
-        if (error) {
-          reject({ message: MEN_INCORRECT_SCHEMA, data: error });
-        } else {
-          resolve({ message: MEN_CORRECT_DATA, data: value });
-        }
-      })
+            let { error, value } = registerNewUserSchema.validate(req.body);
+            if (error) {
+                reject({ message: MEN_INCORRECT_SCHEMA, data: error });
+            } else {
+                resolve({ message: MEN_CORRECT_DATA, data: value });
+            }
+        })
         .then(data => {
-          res.status(CODE_RESP_OK)
-          .json(
-            mensajeSalida(CODE_MESSAGE_OK, data.message, data.data).SUCCESS
-          );
+            res.status(CODE_RESP_OK)
+                .json(
+                    mensajeSalida(CODE_MESSAGE_OK, data.message, data.data).SUCCESS
+                );
         })
         .catch(error => {
-          res.status(CODE_RESP_BAD_REQUEST)
-          .json(
-            mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
-          );
+            res.status(CODE_RESP_BAD_REQUEST)
+                .json(
+                    mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
+                );
         });
 };
