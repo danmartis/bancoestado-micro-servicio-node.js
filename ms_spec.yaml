@@ -38,10 +38,10 @@ paths:
             application/json:    
               schema:
                 $ref: '#/components/schemas/ApiResponseIncorrectData'
-  /maintainer-user:
+  /maintainer-user/registerNewUser:
     post:
       tags:
-      - registerNewUser
+      - maintainer-user
       summary: Registra a un nuevo usuario
       requestBody:
         content:
