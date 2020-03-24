@@ -4,7 +4,7 @@ import {rut, email, password} from "./types";
 export const loginSchema = Joi.object({
   rut: rut,
   email: email,
-  password: password,
+  password: Joi.string().required(), // al realizar login no se limita a schema para evitar hackeos
   changePassword: Joi.boolean()
 });
 

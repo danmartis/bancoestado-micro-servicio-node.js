@@ -1,9 +1,18 @@
 import "@babel/polyfill";
 import app from "../../../../src/app";
 import supertest from "supertest";
+import {
+  CODE_RESP_BAD_REQUEST,
+  CODE_RESP_OK,
+  CODE_MESSAGE_OK,
+  CODE_MESSAGE_ERROR,
+  MEN_CORRECT_DATA,
+  MEN_INCORRECT_SCHEMA,
+} from "../../../../src/config/mensaje-respuesta";
+
 const request = supertest(app);
 
-it('Test endpoint /v1/registro-biller/ good', async done => {
+it(`Test endpoint /v1/registro-biller/ good ${MEN_CORRECT_DATA}`, async done => {
   let dataMock = {
     business_name: "businessname",
     rut: "rut",
@@ -17,14 +26,14 @@ it('Test endpoint /v1/registro-biller/ good', async done => {
   const res = await request.post('/ms/se-ms-registrobiller/v1/registro-biller/').send(dataMock);
   let text = JSON.parse(res.text);
 
-  expect(res.status).toBe(200);
-  expect(text.status).toBe('OK');
-  expect(text.message).toBe('Datos Correctos');
+  expect(res.status).toBe(CODE_RESP_OK);
+  expect(text.code).toBe(`${CODE_MESSAGE_OK}.000`);
+  expect(text.message).toBe(MEN_CORRECT_DATA);
   done()
 })
 
 
-it('Test endpoint /v1/registro-biller/ Error', async done => {
+it(`Test endpoint /v1/registro-biller/ Error ${MEN_INCORRECT_SCHEMA}`, async done => {
   let dataMock = {
     rut: "rut",
     name: "name",
@@ -37,8 +46,8 @@ it('Test endpoint /v1/registro-biller/ Error', async done => {
   const res = await request.post('/ms/se-ms-registrobiller/v1/registro-biller/').send(dataMock);
   let text = JSON.parse(res.text);
 
-  expect(res.status).toBe(400);
-  expect(text.status).toBe('ERROR');
-  expect(text.message).toBe('Datos incompletos');
+  expect(res.status).toBe(CODE_RESP_BAD_REQUEST);
+  expect(text.code).toBe(`${CODE_MESSAGE_ERROR}.001`);
+  expect(text.message).toBe(MEN_INCORRECT_SCHEMA);
   done()
 })
