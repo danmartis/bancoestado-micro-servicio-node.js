@@ -5,6 +5,7 @@ import app from "./app";
 import { api } from "./config/appConfig";
 // Para desarrollo, muestra todas los endpoint del router
 import listEndpoints from "express-list-endpoints";
+import { base } from "../src/routes/"
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
@@ -12,7 +13,6 @@ const main = async () => {
     let port = api.port;
     
     //Documentación API
-    const base = "/ms/se-ms-registrobiller";
     const swaggerDocument = YAML.load('./ms_spec.yaml');
     app.use(`${base}/api-docs`, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
