@@ -5,7 +5,8 @@ import {
     CODE_MESSAGE_OK,
     CODE_MESSAGE_ERROR,
     MEN_CORRECT_DATA,
-    MEN_INCORRECT_DATA
+    MEN_INCORRECT_DATA,
+    USER_NOT_FOUND
 } from "../../../config/mensaje-respuesta";
 
 import { registerNewUserSchema } from "../../schemas/register-new-user.schema";
@@ -16,7 +17,7 @@ export const personalInformation = (req, res) => {
             if (dataUser) {
                 resolve({ message: MEN_CORRECT_DATA, data: dataUser });
             } else {
-                reject({ message: MEN_INCORRECT_DATA, data: error });
+                reject({ message: MEN_INCORRECT_DATA, data: USER_NOT_FOUND });
             }
         })
         .then(data => {
@@ -47,8 +48,8 @@ const users = [{
         comuna: 'Ñuñoa',
         city: 'Santiago',
         roles: [{
-          id: 2,
-          role: "consultor"
+            id: 2,
+            role: "consultor"
         }]
     },
     {
@@ -62,35 +63,35 @@ const users = [{
         phone: '+56978811992',
         address: 'Los Cerezos 89, dpto 782',
         comuna: 'Ñuñoa',
-        city: 'Santiago', 
+        city: 'Santiago',
         roles: [{
-          id: 1,
-          role: "admin"
+            id: 1,
+            role: "admin"
         }]
     }
 ];
 
 export const registerNewUser = (req, res) => {
-  new Promise((resolve, reject) => {
-    let { error, value } = registerNewUserSchema.validate(req.body);
-    if (error) {
-      reject(error);
-    } else {
-      resolve(value);
-    }
-  })
-    .then(data => {
-      res.json({
-        status: "OK",
-        message: "Datos Correctos",
-        data
-      });
-    })
-    .catch(error => {
-      res.status(400).json({
-        status: "ERROR",
-        message: "Datos incompletos",
-        error
-      });
-    });
+    new Promise((resolve, reject) => {
+            let { error, value } = registerNewUserSchema.validate(req.body);
+            if (error) {
+                reject(error);
+            } else {
+                resolve(value);
+            }
+        })
+        .then(data => {
+            res.json({
+                status: "OK",
+                message: "Datos Correctos",
+                data
+            });
+        })
+        .catch(error => {
+            res.status(400).json({
+                status: "ERROR",
+                message: "Datos incompletos",
+                error
+            });
+        });
 };

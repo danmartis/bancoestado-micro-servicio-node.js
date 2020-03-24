@@ -18,8 +18,8 @@ export const MEN_INCORRECT_DATA = "Datos incorrectos. Favor revísalos e ingresa
 export const MEN_CORRECT_DATA = "Datos Correctos";
 export const MEN_INCORRECT_PASSWORD = "Clave incorrecta";
 export const KEY_LOCKED = "Clave Bloqueada. Puedes recuperarla presionando el link “¿olvidaste tu contraseña?";
-
+export const USER_NOT_FOUND = "Usuario no encontrado";
 export const mensajeSalida = (code, message, data) => ({
-  SUCCESS: { code: `${code}.000`, message, data },
-  ERROR: { code: `${code}.001`, message, data }
+    SUCCESS: { code: `${code}.000`, message, data },
+    ERROR: { code: `${code}.001`, message, data }
 });
