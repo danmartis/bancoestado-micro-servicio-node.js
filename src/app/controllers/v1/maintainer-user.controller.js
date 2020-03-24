@@ -35,19 +35,18 @@ export const personalInformation = (req, res) => {
         });
 };
 
-
 const users = [{
         id: 1,
         email: "claudio.monasterio@telefonica.com",
         rut: "76124890-1",
         password: "movistar",
         changePassword: true,
-        userRut: '15446676-k',
-        birthday: '10/12/1986',
-        phone: '+56978811992',
-        address: 'Los Cerezos 89, dpto 782',
-        comuna: 'Ñuñoa',
-        city: 'Santiago',
+        userRut: "15446676-k",
+        birthday: "10/12/1986",
+        phone: "+56978811992",
+        address: "Los Cerezos 89, dpto 782",
+        comuna: "Ñuñoa",
+        city: "Santiago",
         roles: [{
             id: 2,
             role: "consultor"
@@ -59,12 +58,12 @@ const users = [{
         rut: "92580000-7",
         password: "entel123",
         changePassword: false,
-        userRut: '15446676-k',
-        birthday: '10/12/1986',
-        phone: '+56978811992',
-        address: 'Los Cerezos 89, dpto 782',
-        comuna: 'Ñuñoa',
-        city: 'Santiago',
+        userRut: "15446676-k",
+        birthday: "10/12/1986",
+        phone: "+56978811992",
+        address: "Los Cerezos 89, dpto 782",
+        comuna: "Ñuñoa",
+        city: "Santiago",
         roles: [{
             id: 1,
             role: "admin"
