@@ -61,6 +61,24 @@ paths:
             application/json:    
               schema:
                 $ref: '#/components/schemas/ApiResponseIncorrectData'
+  /maintainer-user/informacion-personal:
+    post:
+        tags:
+        - maintainer-user
+        summary: Obtiene los datos del perfil del usuario
+        responses:
+          200:
+            description: Datos Correctos
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ApiResponseCorrectData'
+          400:
+            description: Datos Incorrectos
+            content:
+              application/json:    
+                schema:
+                  $ref: '#/components/schemas/ApiResponseIncorrectData'
   /login:
     post:
       tags:
