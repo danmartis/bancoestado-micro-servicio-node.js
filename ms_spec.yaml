@@ -102,7 +102,7 @@ paths:
             application/json:    
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/ApiResponseIncorrectData'
+                  - $ref: '#/components/schemas/ApiResponseIncorrectDataLogin'
                   - $ref: '#/components/schemas/ApiResponseIncorrectPasswrd'
                   - $ref: '#/components/schemas/ApiResponsekeyLocked'
   /login/cambio-contrasenia:
@@ -226,6 +226,24 @@ components:
         data:
           type: object
           example: {}
+    ApiResponseIncorrectDataLogin:
+      type: object
+      properties:
+        code:
+          type: string
+          example: ERROR.001
+        message:
+          type: string
+          example: Datos Incorrectos
+        data:
+          type: object
+          properties:
+            title: 
+              type: string
+              example: Datos Incorrectos
+            descripcion:
+              type: string
+              example: Favor revísalos e ingresa nuevamente
     ApiResponseIncompleteData:
       type: object
       properties:
@@ -246,10 +264,16 @@ components:
           example: ERROR.001
         message:
           type: string
-          example: Clave incorrecta
+          example: Datos Incorrectos
         data:
           type: object
-          example: {}
+          properties:
+            title: 
+              type: string
+              example: Clave incorrecta
+            descripcion:
+              type: string
+              example: 
     ApiResponsekeyLocked:
       type: object
       properties:
@@ -258,8 +282,16 @@ components:
           example: ERROR.001
         message:
           type: string
-          example: Clave Bloqueada. Puedes recuperarla presionando el link “¿olvidaste tu contraseña?
+          example: Datos Incorrectos
         data:
           type: object
-          example: {}
+          properties:
+            title: 
+              type: string
+              example: Clave Bloqueada
+            descripcion:
+              type: string
+              example: Puedes recuperarla presionando el link “¿olvidaste tu contraseña?
+
+
     

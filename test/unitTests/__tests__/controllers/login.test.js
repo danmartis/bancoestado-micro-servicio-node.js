@@ -62,7 +62,9 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_PASSW
   
   expect(res.status).toBe(CODE_RESP_BAD_REQUEST);
   expect(text.code).toBe(`${CODE_MESSAGE_ERROR}.001`);
-  expect(text.message).toBe(MEN_INCORRECT_PASSWORD);
+  expect(text.message).toBe(MEN_INCORRECT_DATA);
+  expect(text.data.titulo).toBe(MEN_INCORRECT_PASSWORD);
+  expect(text.data.descripcion).toBe("");
   done()
 })
 
@@ -79,7 +81,9 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_DATA_
   
   expect(res.status).toBe(CODE_RESP_BAD_REQUEST);
   expect(text.code).toBe(`${CODE_MESSAGE_ERROR}.001`);
-  expect(text.message).toBe(MEN_INCORRECT_DATA_LOGIN);
+  expect(text.message).toBe(MEN_INCORRECT_DATA);
+  expect(text.data.titulo).toBe(MEN_INCORRECT_DATA);
+  expect(text.data.descripcion).toBe(MEN_INCORRECT_DATA_LOGIN);
   done()
 })
 

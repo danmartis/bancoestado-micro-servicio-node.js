@@ -30,17 +30,17 @@ export const login = (req, res) => {
         if (user.password == value.password) {
           resolve({ message: MEN_CORRECT_DATA, data: user });
         } else {
-          reject({ message: MEN_INCORRECT_PASSWORD, data: {} });
+          reject({ message: MEN_INCORRECT_DATA, data: { titulo: MEN_INCORRECT_PASSWORD, descripcion: "" } });
         }
       } else {
-        reject({ message: MEN_INCORRECT_DATA_LOGIN, data: {} });
+        reject({ message: MEN_INCORRECT_DATA, data: { titulo: MEN_INCORRECT_DATA, descripcion: MEN_INCORRECT_DATA_LOGIN } });
       }
 
       // esto debe cambiar cuando se realice la conexión con switch ya que él validará el bloqueo de contraseña
       /*
       let error_3_veces = 3;
       if( error_3_veces == 3 )
-        reject({ message: KEY_LOCKED, data: {} });
+        reject({ message: MEN_INCORRECT_DATA, data: { titulo: KEY_LOCKED, descripcion: KEY_LOCKED_DESCRIPTION } });
       */
     }
   })

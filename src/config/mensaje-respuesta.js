@@ -13,13 +13,15 @@ export const CODE_MESSAGE_OK = "OK";
 export const CODE_MESSAGE_ERROR = "ERROR";
 
 //MENSAJE DE ERROR
+export const MEN_PAGE_NOT_FOUND = "PAGE NOT FOUND";
 export const MEN_INCOMPLETE_DATA = "Datos Incompletos";
 export const MEN_INCORRECT_SCHEMA = "Schema incorrectos";
 export const MEN_INCORRECT_DATA = "Datos Incorrectos";
-export const MEN_INCORRECT_DATA_LOGIN = "Datos incorrectos. Favor revísalos e ingresa nuevamente";
+export const MEN_INCORRECT_DATA_LOGIN = "Favor revísalos e ingresa nuevamente";
 export const MEN_CORRECT_DATA = "Datos Correctos";
 export const MEN_INCORRECT_PASSWORD = "Clave incorrecta";
-export const KEY_LOCKED = "Clave Bloqueada. Puedes recuperarla presionando el link “¿olvidaste tu contraseña?";
+export const KEY_LOCKED = "Clave Bloqueada";
+export const KEY_LOCKED_DESCRIPTION = "Puedes recuperarla presionando el link “¿olvidaste tu contraseña?";
 export const USER_NOT_FOUND = "Usuario no encontrado";
 export const mensajeSalida = (code, message, data) => ({
   SUCCESS: { code: `${code}.000`, message, data },
