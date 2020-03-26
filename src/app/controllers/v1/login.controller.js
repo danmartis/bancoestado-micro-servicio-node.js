@@ -88,13 +88,13 @@ export const changePassword = (req, res) => {
 const users = [
   {
     email: "claudio.monasterio@telefonica.com",
-    rut: "76124890-1",
+    rut: "76.124.890-1",
     password: "movistar",
     changePassword: true
   },
   {
     email: "entel@cliente.cl",
-    rut: "92580000-7",
+    rut: "92.580.000-7",
     password: "entel123",
     changePassword: false
   }
