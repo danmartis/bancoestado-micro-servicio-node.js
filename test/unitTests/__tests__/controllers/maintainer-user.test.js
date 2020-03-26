@@ -80,3 +80,44 @@ it(`Test endpoint /registerNewUser Error ${MEN_INCORRECT_SCHEMA}`, async done =>
     expect(text.message).toBe(MEN_INCORRECT_SCHEMA);
     done();
 });
+
+
+
+it(`Test endpoint /updatePerfilUser OK ${MEN_CORRECT_DATA}`, async done => {
+    let dataMock = {
+        birthday: "12-10-1994",
+        phone: "999999999",
+        address: "San antonio 8666",
+        comuna: "Santiago",
+        city: "Santiago"
+    };
+
+    const res = await request.put('/ms/se-ms-registrobiller/v1/maintainer-user/editar-perfil')
+        .send(dataMock);
+    let text = JSON.parse(res.text);
+
+    expect(res.status).toBe(CODE_RESP_OK);
+    expect(text.code).toBe(`${CODE_MESSAGE_OK}.000`);
+    expect(text.message).toBe(MEN_CORRECT_DATA);
+    done();
+});
+
+
+it(`Test endpoint /updatePerfilUser ERROR ${MEN_INCORRECT_DATA}`, async done => {
+    let dataMock = {
+        birthday: "12-10-1994",
+        phone: "99999999",
+        address: "San antonio 8666",
+        comuna: "Santiago",
+        city: "Santiago"
+    };
+
+    const res = await request.put('/ms/se-ms-registrobiller/v1/maintainer-user/editar-perfil')
+        .send(dataMock);
+    let text = JSON.parse(res.text);
+
+    expect(res.status).toBe(CODE_RESP_BAD_REQUEST);
+    expect(text.code).toBe(`${CODE_MESSAGE_ERROR}.001`);
+    expect(text.message).toBe(MEN_INCORRECT_DATA);
+    done();
+});
