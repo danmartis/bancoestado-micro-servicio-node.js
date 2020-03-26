@@ -41,36 +41,50 @@ export const personalInformation = (req, res) => {
 const users = [{
         id: 1,
         email: "claudio.monasterio@telefonica.com",
-        rut: "76124890-1",
+        rut: "76.124.890-1",
         password: "movistar",
         changePassword: true,
         userRut: "15446676-k",
         birthday: "10/12/1986",
         phone: "+56978811992",
         address: "Los Cerezos 89, dpto 782",
-        comuna: "Ñuñoa",
+        commune: "Ñuñoa",
         city: "Santiago",
         roles: [{
             id: 2,
-            role: "consultor"
-        }]
+            role: "Consultor"
+        }],
+        company: [
+          {
+            id: 2,
+            name: "Telefónica"
+          }
+        ],
+        contact: "Si",
+        contactType: "Contacto Operacional"
     },
     {
         id: 2,
         email: "entel@cliente.cl",
-        rut: "92580000-7",
+        rut: "92.580.000-7",
         password: "entel123",
         changePassword: false,
         userRut: "15446676-k",
         birthday: "10/12/1986",
         phone: "+56978811992",
         address: "Los Cerezos 89, dpto 782",
-        comuna: "Ñuñoa",
+        commune: "Ñuñoa",
         city: "Santiago",
         roles: [{
             id: 1,
-            role: "admin"
-        }]
+            role: "Administrador"
+        }],
+        company: [{
+          id: 1,
+          name: "Inmobiliaria Aconcagua, S.A"
+        }],
+        contact: "Si",
+        contactType: "Contacto Operacional"
     }
 ];
 
