@@ -79,6 +79,24 @@ paths:
               application/json:    
                 schema:
                   $ref: '#/components/schemas/ApiResponseIncorrectData'
+  /maintainer-user/editar-perfil:
+    post:
+        tags:
+        - maintainer-user
+        summary: Edita los datos del perfil del usuario
+        responses:
+          200:
+            description: Datos Correctos
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/UpdatePerfilUserSchema'
+          400:
+            description: Datos Incorrectos
+            content:
+              application/json:    
+                schema:
+                  $ref: '#/components/schemas/ApiResponseIncorrectData'
   /login:
     post:
       tags:
@@ -202,6 +220,24 @@ components:
         tipoContacto:
           type: string
           example: Contacto Operacional
+    UpdatePerfilUserSchema:
+      type: object
+      properties:
+        birthday:
+          type: date
+          example: 12-10-1994
+        phone:
+          type: string
+          example: 999999999
+        address:
+          type: string
+          example: San antonio 8666
+        comuna:
+          type: string
+          example: Santiago
+        city:
+          type: string
+          example: Santiago
     ApiResponseCorrectData:
       type: object
       properties:
