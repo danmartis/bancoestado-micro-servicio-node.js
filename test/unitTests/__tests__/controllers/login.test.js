@@ -10,7 +10,7 @@ import {
   MEN_INCORRECT_DATA_LOGIN,
   MEN_INCORRECT_SCHEMA,
   MEN_INCORRECT_DATA,
-  MEN_INCORRECT_PASSWORD,
+  MEN_INCORRECT_PASSWORD
 } from "../../../../src/config/mensaje-respuesta";
 
 const request = supertest(app);
@@ -18,7 +18,7 @@ const request = supertest(app);
 it(`Test endpoint /ms/se-ms-registrobiller/v1/login good (${MEN_CORRECT_DATA})`, async done => {
   let dataMock = {
     email: "claudio.monasterio@telefonica.com",
-    rut: "76124890-1",
+    rut: "76.124.890-1",
     password: "movistar",
     changePassword: false
   };
@@ -49,10 +49,10 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_SCHEM
   done()
 })
 
-it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_PASSWORD})`, async done => {
+it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_DATA})`, async done => {
   let dataMock = {
     email: "claudio.monasterio@telefonica.com",
-    rut: "76124890-1",
+    rut: "76.124.890-1",
     password: "movista2",
     changePassword: true
   };

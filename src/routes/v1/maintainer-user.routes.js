@@ -1,7 +1,8 @@
 import { Router } from "express";
-import {personalInformation, 
-        registerNewUser, 
-        updatePerfilUser
+import {
+  personalInformation,
+  registerNewUser,
+  updatePerfilUser
 } from "../../app/controllers/v1/maintainer-user.controller";
 
 const router = Router();
