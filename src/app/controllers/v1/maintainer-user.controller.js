@@ -82,6 +82,8 @@ const users = [
     id: 2,
     email: "entel@cliente.cl",
     rut: "92.580.000-7",
+    first_name : "Maria",
+    lastName : "Lagos",
     password: "entel123",
     changePassword: false,
     userRut: "15446676-k",
@@ -94,6 +96,16 @@ const users = [
       {
         id: 1,
         role: "Administrador"
+      }
+    ],
+    covenants: [
+      {
+        nameFile: "Deptos. Coquimbo",
+        activationDate: "10/07/2019"
+      },
+      {
+        nameFile: "Deptos. Zona Sur",
+        activationDate: "10/07/2019"
       }
     ],
     company: [
