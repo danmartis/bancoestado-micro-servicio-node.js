@@ -43,6 +43,8 @@ const users = [
     id: 1,
     email: "claudio.monasterio@telefonica.com",
     rut: "76.124.890-1",
+    first_name : "Claudio",
+    lastName : "Monasterio",
     password: "movistar",
     changePassword: true,
     userRut: "15446676-k",
@@ -55,6 +57,16 @@ const users = [
       {
         id: 2,
         role: "Consultor"
+      }
+    ],
+    covenants: [
+      {
+        nameFile: "Deptos. Coquimbo",
+        activationDate: "10/07/2019"
+      },
+      {
+        nameFile: "Deptos. Zona Sur",
+        activationDate: "10/07/2019"
       }
     ],
     company: [
