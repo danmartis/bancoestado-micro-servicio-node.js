@@ -5,6 +5,6 @@ export const UpdatePerfilUserSchema = Joi.object({
   birthday: date,
   phone: phone,
   address: Joi.string().required().max(150),
-  comuna: Joi.string().required().max(50),
+  commune: Joi.string().required().max(50),
   city: Joi.string().required().max(50)
 });

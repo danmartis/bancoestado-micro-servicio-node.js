@@ -232,7 +232,7 @@ components:
         address:
           type: string
           example: San antonio 8666
-        comuna:
+        commune:
           type: string
           example: Santiago
         city:

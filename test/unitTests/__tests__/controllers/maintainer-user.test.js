@@ -90,7 +90,7 @@ it(`Test endpoint /updatePerfilUser OK ${MEN_CORRECT_DATA}`, async done => {
     birthday: "12-10-1994",
     phone: "999999999",
     address: "San antonio 8666",
-    comuna: "Santiago",
+    commune: "Santiago",
     city: "Santiago"
   };
 
@@ -110,7 +110,7 @@ it(`Test endpoint /updatePerfilUser ERROR ${MEN_INCORRECT_DATA}`, async done => 
     birthday: "12-10-1994",
     phone: "99999999",
     address: "San antonio 8666",
-    comuna: "Santiago",
+    commune: "Santiago",
     city: "Santiago"
   };
 
