@@ -17,7 +17,7 @@ const request = supertest(app);
 
 it(`Test endpoint /ms/se-ms-registrobiller/v1/login good (${MEN_CORRECT_DATA})`, async done => {
   let dataMock = {
-    email: "claudio.monasterio@telefonica.com",
+    email: "pruebaemailsiigroup@yopmail.com",
     rut: "76124890-1",
     password: "movistar",
     changePassword: false
@@ -34,7 +34,7 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login good (${MEN_CORRECT_DATA})`,
 
 it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_SCHEMA})`, async done => {
   let dataMock = {
-    email: "claudio.monasterio@telefonica.com",
+    email: "pruebaemailsiigroup@yopmail.com",
     rut: "19",
     password: "movistar",
     changePassword: false
@@ -51,7 +51,7 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_SCHEM
 
 it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_DATA})`, async done => {
   let dataMock = {
-    email: "claudio.monasterio@telefonica.com",
+    email: "pruebaemailsiigroup@yopmail.com",
     rut: "76124890-1",
     password: "movista2",
     changePassword: true
@@ -125,7 +125,7 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login/cambio-contrasenia error (${
 // recuperar contraseña
 it(`Test endpoint /ms/se-ms-registrobiller/v1/login/recover-password good (${MEN_CORRECT_DATA})`, async done => {
   let dataMock = {
-    email: "claudio.monasterio@telefonica.com",
+    email: "pruebaemailsiigroup@yopmail.com",
     rut: "76124890-1",
   };
   
@@ -140,7 +140,7 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login/recover-password good (${MEN
 
 it(`Test endpoint /ms/se-ms-registrobiller/v1/login/recover-password error (${MEN_INCORRECT_SCHEMA})`, async done => {
   let dataMock = {
-    email: "claudio.monasterio@telefonica.com",
+    email: "pruebaemailsiigroup@yopmail.com",
     rut: "19",
   };
   

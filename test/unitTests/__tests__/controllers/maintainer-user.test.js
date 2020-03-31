@@ -15,7 +15,7 @@ const request = supertest(app);
 
 it(`Test endpoint /informacion-personal OK ${MEN_CORRECT_DATA}`, async done => {
   let dataMock = {
-    email: "claudio.monasterio@telefonica.com",
+    email: "pruebaemailsiigroup@yopmail.com",
     rut: "76124890-1"
   };
 
@@ -159,7 +159,7 @@ it(`Test endpoint /listar-usuarios Error ${MEN_INCORRECT_DATA}`, async done => {
 
 it(`Test endpoint /updateUser OK ${MEN_CORRECT_DATA}`, async done => {
   let dataMock = {
-    email: "claudio.monasterio@telefonica.com",
+    email: "pruebaemailsiigroup@yopmail.com",
     rut: "76.124.890-1",
     roles: [
       {
@@ -184,7 +184,7 @@ it(`Test endpoint /updateUser OK ${MEN_CORRECT_DATA}`, async done => {
 
 it(`Test endpoint /updateUser ERROR ${MEN_INCORRECT_DATA}`, async done => {
   let dataMock = {
-    email: "claudio.monasterio@telefonica.com",
+    email: "pruebaemailsiigroup@yopmail.com",
     rut: "76.124.890-1",
     roles: [
       {

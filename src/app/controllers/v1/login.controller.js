@@ -102,7 +102,7 @@ export const recoverPassword = (req, res) => {
       });
       
       if (user) {
-        resolve({ message: MEN_CORRECT_DATA, data: {}});
+        resolve({ message: MEN_CORRECT_DATA, data: {clave_provisoria: "estaEsUnaClaveProvisoria"}});
       } else {
         reject({message: MEN_INCORRECT_DATA,data: {titulo: MEN_INCORRECT_DATA, descripcion: MEN_INCORRECT_DATA_DESCRIPTION}});
       }
@@ -124,15 +124,21 @@ export const recoverPassword = (req, res) => {
 
 const users = [
   {
-    email: "claudio.monasterio@telefonica.com",
+    email: "pruebaemailsiigroup@yopmail.com",
     rut: "76124890-1",
     password: "movistar",
     changePassword: true
   },
   {
-    email: "entel@cliente.cl",
+    email: "pruebaemailsiigroup2@yopmail.com",
     rut: "92580000-7",
     password: "entel123",
+    changePassword: false
+  },
+  {
+    email: "pruebaemailsiigroup2@yopmail.com",
+    rut: "76124890-1",
+    password: "movistar",
     changePassword: false
   }
 ];

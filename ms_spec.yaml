@@ -213,7 +213,7 @@ components:
           example: Gonzalez Muñoz
         email:
           type: string
-          example: entel@cliente.cl
+          example: pruebaemailsiigroup2@yopmail.com
         phone:
           type: string
           example: 223600123
@@ -228,7 +228,7 @@ components:
           example: 76124890-1
         email:
           type: string
-          example: claudio.monasterio@telefonica.com
+          example: pruebaemailsiigroup@yopmail.com
         password:
           type: string
           example: movistar
@@ -243,7 +243,7 @@ components:
           example: 92580000-7
         email:
           type: string
-          example: entel@cliente.cl
+          example: pruebaemailsiigroup2@yopmail.com
         oldPassword:
           type: string
           example: entel123
@@ -258,7 +258,7 @@ components:
           example: "76124890-1"
         email:
           type: "string"
-          example: "claudio.monasterio@telefonica.com"
+          example: "pruebaemailsiigroup@yopmail.com"
     registerNewUser:
       type: object
       properties:
@@ -267,7 +267,7 @@ components:
           example: Juan Perez
         email:
           type: string
-          example: entel@cliente.cl
+          example: pruebaemailsiigroup2@yopmail.com
         perfil:
           type: string
           example: Administrador

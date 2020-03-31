@@ -41,7 +41,7 @@ export const personalInformation = (req, res) => {
 const users = [
   {
     id: 1,
-    email: "claudio.monasterio@telefonica.com",
+    email: "pruebaemailsiigroup@yopmail.com",
     rut: "76124890-1",
     first_name: "Claudio",
     lastName: "Monasterio",
@@ -80,7 +80,7 @@ const users = [
   },
   {
     id: 2,
-    email: "entel@cliente.cl",
+    email: "pruebaemailsiigroup2@yopmail.com",
     rut: "92580000-7",
     first_name: "Maria",
     lastName: "Lagos",
@@ -119,7 +119,7 @@ const users = [
   },
   {
     id: 3,
-    email: "carolina.galdames@telefonica.com",
+    email: "pruebaemailsiigroup3@yopmail.com",
     rut: "76124890-1",
     first_name: "Carolina",
     lastName: "Galdames",
