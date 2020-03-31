@@ -97,6 +97,29 @@ paths:
               application/json:    
                 schema:
                   $ref: '#/components/schemas/ApiResponseIncorrectData'
+  /maintainer-user/listar-usuarios:
+    post:
+      tags:
+      - maintainer-user
+      summary: Registra a un nuevo usuario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/listarUsuarios'
+      responses:
+        200:
+          description: Datos Correctos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseCorrectData'
+        400:
+          description: Datos Incorrectos
+          content:
+            application/json:    
+              schema:
+                $ref: '#/components/schemas/ApiResponseIncorrectData'
   /login:
     post:
       tags:
@@ -238,6 +261,12 @@ components:
         city:
           type: string
           example: Santiago
+    listarUsuarios:
+      type: object
+      properties:
+        rut:
+          type: string
+          example: 76.124.890-1
     ApiResponseCorrectData:
       type: object
       properties:

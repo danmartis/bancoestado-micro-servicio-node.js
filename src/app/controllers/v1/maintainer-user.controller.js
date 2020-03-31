@@ -116,7 +116,46 @@ const users = [
     ],
     contact: "Si",
     contactType: "Contacto Operacional"
-  }
+  },
+  {
+    id: 3,
+    email: "carolina.galdames@telefonica.com",
+    rut: "76.124.890-1",
+    first_name : "Carolina",
+    lastName : "Galdames",
+    password: "movistar",
+    changePassword: true,
+    userRut: "12312312-3",
+    birthday: "10/12/1986",
+    phone: "+56978811992",
+    address: "Los Cerezos 89, dpto 782",
+    commune: "Ñuñoa",
+    city: "Santiago",
+    roles: [
+      {
+        id: 2,
+        role: "Consultor"
+      }
+    ],
+    covenants: [
+      {
+        nameFile: "Deptos. Coquimbo",
+        activationDate: "10/07/2019"
+      },
+      {
+        nameFile: "Deptos. Zona Sur",
+        activationDate: "10/07/2019"
+      }
+    ],
+    company: [
+      {
+        id: 2,
+        name: "Telefónica"
+      }
+    ],
+    contact: "Si",
+    contactType: "Contacto Operacional"
+  },
 ];
 
 export const registerNewUser = (req, res) => {
@@ -167,4 +206,29 @@ export const updatePerfilUser = (req, res) => {
           mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
         );
     });
+};
+
+export const getUsers = (req, res) => {
+  new Promise((resolve, reject) => {
+      let dataUser = users.filter(
+          lista => lista.rut === req.body.rut
+      );
+      if (dataUser.length > 0) {
+          resolve({ message: MEN_CORRECT_DATA, data: dataUser });
+      } else {
+          reject({ message: MEN_INCORRECT_DATA, data: USER_NOT_FOUND });
+      }
+  })
+  .then(data => {
+      res
+          .status(CODE_RESP_OK)
+          .json(mensajeSalida(CODE_MESSAGE_OK, data.message, data.data).SUCCESS);
+  })
+  .catch(error => {
+      res
+          .status(CODE_RESP_BAD_REQUEST)
+          .json(
+              mensajeSalida(CODE_MESSAGE_ERROR, error.message, error.data).ERROR
+          );
+  });
 };

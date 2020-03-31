@@ -124,3 +124,35 @@ it(`Test endpoint /updatePerfilUser ERROR ${MEN_INCORRECT_DATA}`, async done => 
   expect(text.message).toBe(MEN_INCORRECT_DATA);
   done();
 });
+
+it(`Test endpoint /listar-usuarios OK ${MEN_CORRECT_DATA}`, async done => {
+  let dataMock = {
+    rut: "76.124.890-1"
+  };
+
+  const res = await request
+    .post("/ms/se-ms-registrobiller/v1/maintainer-user/listar-usuarios")
+    .send(dataMock);
+  let text = JSON.parse(res.text);
+
+  expect(res.status).toBe(CODE_RESP_OK);
+  expect(text.code).toBe(`${CODE_MESSAGE_OK}.000`);
+  expect(text.message).toBe(MEN_CORRECT_DATA);
+  done();
+});
+
+it(`Test endpoint /listar-usuarios Error ${MEN_INCORRECT_DATA}`, async done => {
+  let dataMock = {
+    rut: "123123123"
+  };
+
+  const res = await request
+    .post("/ms/se-ms-registrobiller/v1/maintainer-user/listar-usuarios")
+    .send(dataMock);
+  let text = JSON.parse(res.text);
+
+  expect(res.status).toBe(CODE_RESP_BAD_REQUEST);
+  expect(text.code).toBe(`${CODE_MESSAGE_ERROR}.001`);
+  expect(text.message).toBe(MEN_INCORRECT_DATA);
+  done();
+});
