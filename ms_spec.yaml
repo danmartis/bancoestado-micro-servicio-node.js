@@ -120,6 +120,24 @@ paths:
             application/json:    
               schema:
                 $ref: '#/components/schemas/ApiResponseIncorrectData'
+  /maintainer-user/editar-usuario:
+    post:
+        tags:
+        - maintainer-user
+        summary: Edita los datos del usuario
+        responses:
+          200:
+            description: Datos Correctos
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/UpdateUserSchema'
+          400:
+            description: Datos Incorrectos
+            content:
+              application/json:    
+                schema:
+                  $ref: '#/components/schemas/ApiResponseIncorrectData'
   /login:
     post:
       tags:
@@ -301,6 +319,30 @@ components:
         rut:
           type: string
           example: 76.124.890-1
+    UpdateUserSchema:
+      type: object
+      properties:
+        email:
+          type: string
+          example: prueba@gmail.com
+        rut:
+          type: string
+          example: 9999999-9
+        roles:
+          type: object
+          properties:
+              id: 
+                type: string,
+                example: 2
+              role:
+                type: string
+                example: Consultor
+        contact:
+          type: string
+          example: Si
+        contactType:
+          type: string
+          example: Contacto Operacional
     ApiResponseCorrectData:
       type: object
       properties:
