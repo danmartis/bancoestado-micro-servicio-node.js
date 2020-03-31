@@ -156,3 +156,52 @@ it(`Test endpoint /listar-usuarios Error ${MEN_INCORRECT_DATA}`, async done => {
   expect(text.message).toBe(MEN_INCORRECT_DATA);
   done();
 });
+
+it(`Test endpoint /updateUser OK ${MEN_CORRECT_DATA}`, async done => {
+  let dataMock = {
+    email: "claudio.monasterio@telefonica.com",
+    rut: "76.124.890-1",
+    roles: [
+      {
+        "id": 2,
+        "role": "Consultor"
+      }
+    ],
+    contact: "Si",
+    contactType: "Contacto Operacional"
+  };
+
+  const res = await request
+    .put("/ms/se-ms-registrobiller/v1/maintainer-user/editar-usuario")
+    .send(dataMock);
+  let text = JSON.parse(res.text);
+
+  expect(res.status).toBe(CODE_RESP_OK);
+  expect(text.code).toBe(`${CODE_MESSAGE_OK}.000`);
+  expect(text.message).toBe(MEN_CORRECT_DATA);
+  done();
+});
+
+it(`Test endpoint /updateUser ERROR ${MEN_INCORRECT_DATA}`, async done => {
+  let dataMock = {
+    email: "claudio.monasterio@telefonica.com",
+    rut: "76.124.890-1",
+    roles: [
+      {
+        "id": 2,
+        "role": "Consultor"
+      }
+    ],
+    contactType: "Contacto Operacional"
+  };
+
+  const res = await request
+    .put("/ms/se-ms-registrobiller/v1/maintainer-user/editar-usuario")
+    .send(dataMock);
+  let text = JSON.parse(res.text);
+
+  expect(res.status).toBe(CODE_RESP_BAD_REQUEST);
+  expect(text.code).toBe(`${CODE_MESSAGE_ERROR}.001`);
+  expect(text.message).toBe(MEN_INCORRECT_DATA);
+  done();
+});
