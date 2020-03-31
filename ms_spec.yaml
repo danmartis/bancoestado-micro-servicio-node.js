@@ -80,7 +80,7 @@ paths:
                 schema:
                   $ref: '#/components/schemas/ApiResponseIncorrectData'
   /maintainer-user/editar-perfil:
-    post:
+    put:
         tags:
         - maintainer-user
         summary: Edita los datos del perfil del usuario
@@ -121,7 +121,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiResponseIncorrectData'
   /maintainer-user/editar-usuario:
-    post:
+    put:
         tags:
         - maintainer-user
         summary: Edita los datos del usuario
