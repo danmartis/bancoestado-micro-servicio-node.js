@@ -7,7 +7,7 @@ import {
   CODE_MESSAGE_OK,
   CODE_MESSAGE_ERROR,
   MEN_CORRECT_DATA,
-  MEN_INCORRECT_DATA_LOGIN,
+  MEN_INCORRECT_DATA_DESCRIPTION,
   MEN_INCORRECT_SCHEMA,
   MEN_INCORRECT_DATA,
   MEN_INCORRECT_PASSWORD
@@ -18,7 +18,7 @@ const request = supertest(app);
 it(`Test endpoint /ms/se-ms-registrobiller/v1/login good (${MEN_CORRECT_DATA})`, async done => {
   let dataMock = {
     email: "claudio.monasterio@telefonica.com",
-    rut: "76.124.890-1",
+    rut: "76124890-1",
     password: "movistar",
     changePassword: false
   };
@@ -52,7 +52,7 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_SCHEM
 it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_DATA})`, async done => {
   let dataMock = {
     email: "claudio.monasterio@telefonica.com",
-    rut: "76.124.890-1",
+    rut: "76124890-1",
     password: "movista2",
     changePassword: true
   };
@@ -68,7 +68,7 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_DATA}
   done()
 })
 
-it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_DATA_LOGIN})`, async done => {
+it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_DATA_DESCRIPTION})`, async done => {
   let dataMock = {
     email: "claudio.monasterio@telefonica.cl",
     rut: "76124890-1",
@@ -83,7 +83,7 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login error (${MEN_INCORRECT_DATA_
   expect(text.code).toBe(`${CODE_MESSAGE_ERROR}.001`);
   expect(text.message).toBe(MEN_INCORRECT_DATA);
   expect(text.data.titulo).toBe(MEN_INCORRECT_DATA);
-  expect(text.data.descripcion).toBe(MEN_INCORRECT_DATA_LOGIN);
+  expect(text.data.descripcion).toBe(MEN_INCORRECT_DATA_DESCRIPTION);
   done()
 })
 
@@ -119,5 +119,53 @@ it(`Test endpoint /ms/se-ms-registrobiller/v1/login/cambio-contrasenia error (${
   expect(res.status).toBe(CODE_RESP_BAD_REQUEST);
   expect(text.code).toBe(`${CODE_MESSAGE_ERROR}.001`);
   expect(text.message).toBe(MEN_INCORRECT_DATA);
+  done()
+})
+
+// recuperar contraseña
+it(`Test endpoint /ms/se-ms-registrobiller/v1/login/recover-password good (${MEN_CORRECT_DATA})`, async done => {
+  let dataMock = {
+    email: "claudio.monasterio@telefonica.com",
+    rut: "76124890-1",
+  };
+  
+  const res = await request.post('/ms/se-ms-registrobiller/v1/login/recover-password').send(dataMock);
+  let text = JSON.parse(res.text);
+
+  expect(res.status).toBe(CODE_RESP_OK);
+  expect(text.code).toBe(`${CODE_MESSAGE_OK}.000`);
+  expect(text.message).toBe(MEN_CORRECT_DATA);
+  done()
+})
+
+it(`Test endpoint /ms/se-ms-registrobiller/v1/login/recover-password error (${MEN_INCORRECT_SCHEMA})`, async done => {
+  let dataMock = {
+    email: "claudio.monasterio@telefonica.com",
+    rut: "19",
+  };
+  
+  const res = await request.post('/ms/se-ms-registrobiller/v1/login/recover-password').send(dataMock);
+  let text = JSON.parse(res.text);
+
+  expect(res.status).toBe(CODE_RESP_BAD_REQUEST);
+  expect(text.code).toBe(`${CODE_MESSAGE_ERROR}.001`);
+  expect(text.message).toBe(MEN_INCORRECT_SCHEMA);
+  done()
+})
+
+it(`Test endpoint /ms/se-ms-registrobiller/v1/login/recover-password error (${MEN_INCORRECT_DATA})`, async done => {
+  let dataMock = {
+    email: "claudio.monasterio@telefonica.cL",
+    rut: "76124890-1",
+  };
+  
+  const res = await request.post('/ms/se-ms-registrobiller/v1/login/recover-password').send(dataMock);
+  let text = JSON.parse(res.text);
+
+  expect(res.status).toBe(CODE_RESP_BAD_REQUEST);
+  expect(text.code).toBe(`${CODE_MESSAGE_ERROR}.001`);
+  expect(text.message).toBe(MEN_INCORRECT_DATA);
+  expect(text.data.titulo).toBe(MEN_INCORRECT_DATA);
+  expect(text.data.descripcion).toBe(MEN_INCORRECT_DATA_DESCRIPTION);
   done()
 })
