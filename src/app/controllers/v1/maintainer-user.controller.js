@@ -42,7 +42,7 @@ const users = [
   {
     id: 1,
     email: "claudio.monasterio@telefonica.com",
-    rut: "76.124.890-1",
+    rut: "76124890-1",
     first_name: "Claudio",
     lastName: "Monasterio",
     password: "movistar",
@@ -81,7 +81,7 @@ const users = [
   {
     id: 2,
     email: "entel@cliente.cl",
-    rut: "92.580.000-7",
+    rut: "92580000-7",
     first_name: "Maria",
     lastName: "Lagos",
     password: "entel123",
@@ -120,7 +120,7 @@ const users = [
   {
     id: 3,
     email: "carolina.galdames@telefonica.com",
-    rut: "76.124.890-1",
+    rut: "76124890-1",
     first_name: "Carolina",
     lastName: "Galdames",
     password: "movistar",
