@@ -169,6 +169,31 @@ paths:
             application/json:    
               schema:
                 $ref: '#/components/schemas/ApiResponseIncorrectData'
+  /login/recover-password:
+    post:
+      tags:
+      - login
+      summary: Recupera clave a un usuario BIller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/recoverPassword'
+      responses:
+        200:
+          description: Datos Correctos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseCorrectData'
+        400:
+          description: Datos Incorrectos
+          content:
+            application/json:    
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ApiResponseIncorrectData'
+                  - $ref: '#/components/schemas/ApiResponseIncorrectDataDetalle'
 components:
   schemas:
     registroBiller:
@@ -225,6 +250,15 @@ components:
         newPassword:
           type: string
           example: entel321
+    recoverPassword:
+      type: "object"
+      properties:
+        rut:
+          type: "string"
+          example: "76124890-1"
+        email:
+          type: "string"
+          example: "claudio.monasterio@telefonica.com"
     registerNewUser:
       type: object
       properties:
@@ -291,6 +325,24 @@ components:
         data:
           type: object
           example: {}
+    ApiResponseIncorrectDataDetalle:
+      type: object
+      properties:
+        code:
+          type: string
+          example: ERROR.001
+        message:
+          type: string
+          example: Datos Incorrectos
+        data:
+          type: object
+          properties:
+            titulo:
+              type: string
+              example: Datos Incorrectos
+            descripcion:
+              type: string
+              example: Favor revísalos e ingresa nuevamente
     ApiResponseIncorrectDataLogin:
       type: object
       properties:
