@@ -56,7 +56,7 @@ const users = [
     roles: [
       {
         id: 2,
-        role: "Consultor"
+        role: "Administrador"
       }
     ],
     covenants: [
@@ -134,7 +134,7 @@ const users = [
     roles: [
       {
         id: 2,
-        role: "Consultor"
+        role: "Operador"
       }
     ],
     covenants: [
