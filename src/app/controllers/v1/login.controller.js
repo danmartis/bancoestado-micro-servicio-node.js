@@ -15,6 +15,7 @@ import {
   MEN_INCORRECT_DATA,
   MEN_INCORRECT_PASSWORD,
 } from "../../../config/mensaje-respuesta";
+import { users } from "../../mock-data/user"
 
 export const login = (req, res) => {
   new Promise((resolve, reject) => {
@@ -102,7 +103,7 @@ export const recoverPassword = (req, res) => {
       });
       
       if (user) {
-        resolve({ message: MEN_CORRECT_DATA, data: {clave_provisoria: "estaEsUnaClaveProvisoria"}});
+        resolve({ message: MEN_CORRECT_DATA, data: {clave_provisoria: "estaEsUnaClaveProvisoria", username: `${user.firstName} ${user.lastName}`}});
       } else {
         reject({message: MEN_INCORRECT_DATA,data: {titulo: MEN_INCORRECT_DATA, descripcion: MEN_INCORRECT_DATA_DESCRIPTION}});
       }
@@ -121,24 +122,3 @@ export const recoverPassword = (req, res) => {
         );
     });
 }
-
-const users = [
-  {
-    email: "pruebaemailsiigroup@yopmail.com",
-    rut: "76124890-1",
-    password: "movistar",
-    changePassword: true
-  },
-  {
-    email: "pruebaemailsiigroup2@yopmail.com",
-    rut: "92580000-7",
-    password: "entel123",
-    changePassword: false
-  },
-  {
-    email: "pruebaemailsiigroup2@yopmail.com",
-    rut: "76124890-1",
-    password: "movistar",
-    changePassword: false
-  }
-];
