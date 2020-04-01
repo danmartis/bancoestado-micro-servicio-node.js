@@ -53,6 +53,7 @@ const users = [
     address: "Los Cerezos 89, dpto 782",
     commune: "Ñuñoa",
     city: "Santiago",
+    img: '',
     roles: [
       {
         id: 2,
@@ -92,6 +93,7 @@ const users = [
     address: "Los Cerezos 89, dpto 782",
     commune: "Ñuñoa",
     city: "Santiago",
+    img: '',
     roles: [
       {
         id: 1,
@@ -131,6 +133,7 @@ const users = [
     address: "Los Cerezos 89, dpto 782",
     commune: "Ñuñoa",
     city: "Santiago",
+    img: '',
     roles: [
       {
         id: 2,
